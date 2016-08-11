@@ -14,7 +14,10 @@
     "glue",
     "hapi"
   ],
-  "author": "n.dufreche@gmail.com",
+  "author": [
+    "Clément Pasquier <clement@n00sphere.net>",
+    "Nicolas Dufreche <n.dufreche@gmail.com>"
+  ],
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/hapipip/uhu/issues"
@@ -27,5 +30,8 @@
   "dependencies": {
     "lodash.values": "^4.2.0",
     "require-yml": "git+https://github.com/Gastonite/require-yml.git"
+  },
+  "peerDependencies": {
+    "glue": "3.x"
   }
 }
