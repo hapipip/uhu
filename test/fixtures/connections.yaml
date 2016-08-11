@@ -1,0 +1,7 @@
+config:
+  - port: 8000
+    labels:
+      - web
+  - port: 8001
+    labels:
+      - admin

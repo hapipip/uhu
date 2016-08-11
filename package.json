@@ -1,0 +1,31 @@
+{
+  "name": "uhu",
+  "version": "1.0.0",
+  "description": "Glue manisfest generator based directories and config files",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab -cCD test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hapipip/uhu.git"
+  },
+  "keywords": [
+    "glue",
+    "hapi"
+  ],
+  "author": "n.dufreche@gmail.com",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/hapipip/uhu/issues"
+  },
+  "homepage": "https://github.com/hapipip/uhu#readme",
+  "devDependencies": {
+    "code": "^3.0.2",
+    "lab": "^10.9.0"
+  },
+  "dependencies": {
+    "lodash.values": "^4.2.0",
+    "require-yml": "git+https://github.com/Gastonite/require-yml.git"
+  }
+}
