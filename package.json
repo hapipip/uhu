@@ -1,7 +1,7 @@
 {
   "name": "uhu",
   "version": "1.0.0",
-  "description": "Glue manisfest generator based directories and config files",
+  "description": "Glue manisfest generator based on directories and config files",
   "main": "index.js",
   "scripts": {
     "test": "lab -cCD test/index.js"
