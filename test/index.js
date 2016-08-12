@@ -1,41 +1,55 @@
 'use strict';
 
 const Lab =  require('lab');
-const Uhu = require('../index');
-const Glue = require('glue');
+const Uhu = require('../lib/index');
+const Path = require('path');
 const {expect} = require('code');
 const {describe, it, before} = exports.lab = Lab.script();
-const expected = require('./fixtures/expected');
+const expected = require('./../../houra/test/fixtures/expected');
 
 describe('Test manifest building', () => {
 
-  it('Loading manifest', (done) => {
+  it('should gather config files into one single object (only one path)', done => {
 
-    let manifest = Uhu.stick(__dirname + '/fixtures/test1');
-
-    expect(manifest).to.be.an.object();
-    expect(manifest.server).to.equal(expected.server);
-    expect(manifest.connections).to.equal(expected.connections);
-    expect(manifest.registrations).to.be.an.array();
-    expect(manifest.registrations).to.have.length(3);
-    expect(manifest.registrations).to.include(expected.registrations[0]);
-    expect(manifest.registrations).to.include(expected.registrations[1]);
-    expect(manifest.registrations).to.include(expected.registrations[2]);
-    done();
-  });
-
-  it('Test manifest directly into glue', (done) => {
-
-    const options = {
-        relativeTo: __dirname
+    const expected = {
+      a: ['cat', 'dog', 'fish'],
+      b: {
+        ba: {
+          baa: {
+            baaa: 'foo'
+          },
+          bab: {baba: 'cool'}
+        },
+        bb: "meaning of life"
+      }
     };
 
-    Glue.compose(Uhu.stick(__dirname + '/fixtures/test2'), options, (err, server) => {
+    const result = Uhu.stick(__dirname + '/fixtures/test1');
 
-      expect(err).to.not.exist();
-      expect(server.plugins.helloworld).to.exist();
-      expect(server.plugins.helloworld.hello).to.equal('world');
-      done();
-    });
+    expect(result).to.equal(expected);
+    done()
   });
+
+  it('should gather config files into one single object (multiple paths)', done => {
+
+    const expected = {
+      a: {aa: 1},
+      b: {
+        ba: {
+          baa: {
+            baaa: true
+          },
+          bab: {baba: 'cool'}
+        },
+        bb: {response: 42}
+      }
+    };
+
+    const result = Uhu.stick(Path.join(__dirname, 'fixtures', 'test1'), Path.join(__dirname, 'fixtures', 'test2'));
+
+    expect(result).to.equal(expected);
+    done()
+  });
+
+
 });

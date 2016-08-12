@@ -1,8 +1,0 @@
-{
-  "plugin": {
-    "register": "./assets",
-    "options": {
-        "uglify": true
-    }
-  }
-}
