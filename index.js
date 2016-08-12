@@ -15,7 +15,15 @@ module.exports = {
       return value
     });
 
-    manifest.registrations = Values(manifest.registrations);
+    if (manifest.registrations) {
+      manifest.registrations = Values(manifest.registrations);
+    }
+
+    if (manifest.manifest) {
+
+      return manifest.manifest;
+    }
+
     return manifest;
   }
 }

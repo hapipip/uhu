@@ -1,0 +1,10 @@
+connections:
+  - port: 8000
+    labels:
+      - web
+  - port: 8001
+    labels:
+      - admin
+registrations:
+  - plugin:
+      register: ./fixtures/plugins/helloworld

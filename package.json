@@ -25,6 +25,7 @@
   "homepage": "https://github.com/hapipip/uhu#readme",
   "devDependencies": {
     "code": "^3.0.2",
+    "glue": "^3.3.0",
     "lab": "^10.9.0"
   },
   "dependencies": {
