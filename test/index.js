@@ -5,7 +5,6 @@ const Uhu = require('../lib/index');
 const Path = require('path');
 const {expect} = require('code');
 const {describe, it, before} = exports.lab = Lab.script();
-const expected = require('./../../houra/test/fixtures/expected');
 
 describe('Test manifest building', () => {
 
