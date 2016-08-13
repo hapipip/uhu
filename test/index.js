@@ -1,41 +1,117 @@
 'use strict';
 
 const Lab =  require('lab');
-const Uhu = require('../index');
-const Glue = require('glue');
+const Uhu = require('../lib/index');
+const Path = require('path');
 const {expect} = require('code');
 const {describe, it, before} = exports.lab = Lab.script();
-const expected = require('./fixtures/expected');
 
 describe('Test manifest building', () => {
 
-  it('Loading manifest', (done) => {
+  it('should merge config files into one single object (from one path)', done => {
 
-    let manifest = Uhu.stick(__dirname + '/fixtures/test1');
-
-    expect(manifest).to.be.an.object();
-    expect(manifest.server).to.equal(expected.server);
-    expect(manifest.connections).to.equal(expected.connections);
-    expect(manifest.registrations).to.be.an.array();
-    expect(manifest.registrations).to.have.length(3);
-    expect(manifest.registrations).to.include(expected.registrations[0]);
-    expect(manifest.registrations).to.include(expected.registrations[1]);
-    expect(manifest.registrations).to.include(expected.registrations[2]);
-    done();
-  });
-
-  it('Test manifest directly into glue', (done) => {
-
-    const options = {
-        relativeTo: __dirname
+    const expected = {
+      a: ['cat', 'dog', 'fish'],
+      b: {
+        ba: {
+          baa: {
+            baaa: 'foo'
+          },
+          bab: {baba: 'cool'}
+        },
+        bb: "meaning of life"
+      }
     };
 
-    Glue.compose(Uhu.stick(__dirname + '/fixtures/test2'), options, (err, server) => {
+    const result = Uhu.stick(__dirname + '/fixtures/test1');
 
-      expect(err).to.not.exist();
-      expect(server.plugins.helloworld).to.exist();
-      expect(server.plugins.helloworld.hello).to.equal('world');
-      done();
-    });
+    expect(result).to.equal(expected);
+    done()
   });
+
+  it('should merge config files into one single object (from multiple paths)', done => {
+
+    const paths = [
+      Path.join(__dirname, 'fixtures', 'test1'),
+      Path.join(__dirname, 'fixtures', 'test2')
+    ];
+
+    let result = Uhu.stick(paths);
+
+    expect(result).to.equal({
+      a: {aa: 1},
+      b: {
+        ba: {
+          baa: {
+            baaa: true
+          },
+          bab: {baba: 'cool'}
+        },
+        bb: {response: 42}
+      }
+    });
+
+
+
+    result = Uhu.stick([
+      Path.join(__dirname, 'fixtures', 'test1'),
+      Path.join(__dirname, 'fixtures', 'test2'),
+      Path.join(__dirname, 'fixtures', 'test3')
+    ]);
+
+    expect(result).to.equal({
+      a: {aa: 1},
+      b: {
+        ba: {
+          baa: {
+            baaa: true,
+            baab: {
+              "z": "foo",
+              "y": "bar"
+            }
+          },
+          bab: {baba: 'cool'}
+        },
+        bb: {response: 42}
+      }
+    });
+
+    done()
+  });
+
+  //it('should merge config files into one single object (from multiple paths)', done => {
+  it('should only return keys that match the mask if "sanitize" options is provided', done => {
+
+    const mask = {
+      b: {
+        ba: {
+          baa: {
+            baab: {
+              z: true
+            }
+          }
+        }
+      }
+    };
+
+    const result = Uhu.stick([
+      Path.join(__dirname, 'fixtures', 'test1'),
+      Path.join(__dirname, 'fixtures', 'test2'),
+      Path.join(__dirname, 'fixtures', 'test3')
+    ], {sanitize: mask});
+
+    expect(result).to.equal({
+      b: {
+        ba: {
+          baa: {
+            baab: {
+              "z": "foo"
+            }
+          }
+        }
+      }
+    });
+    done()
+  });
+
 });

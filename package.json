@@ -2,9 +2,10 @@
   "name": "uhu",
   "version": "1.0.1",
   "description": "Glue manisfest generator based on directories and config files",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "lab -cCD test/index.js"
+    "test": "lab -cCD test/index.js",
+    "test-watch": "fsmonitor -s -p '+*.js' npm test"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,20 @@
   "homepage": "https://github.com/hapipip/uhu#readme",
   "devDependencies": {
     "code": "^3.0.2",
+    "fsmonitor": "^0.2.4",
     "glue": "^3.3.0",
     "lab": "^10.9.0"
   },
   "dependencies": {
-    "lodash.values": "^4.2.0",
-    "require-yml": "git+https://github.com/Gastonite/require-yml.git"
+    "joi": "^9.0.4",
+    "masks": "^1.0.3",
+    "require-yml": "^1.3.0"
   },
   "peerDependencies": {
     "glue": "3.x"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
   }
 }
