@@ -35,7 +35,7 @@
   "dependencies": {
     "joi": "^9.0.4",
     "masks": "^1.0.3",
-    "require-yml": "git+https://github.com/Gastonite/require-yml.git"
+    "require-yml": "^1.3.0"
   },
   "peerDependencies": {
     "glue": "3.x"
