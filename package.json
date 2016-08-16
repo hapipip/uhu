@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "lodash.values": "^4.2.0",
-    "require-yml": "git+https://github.com/Gastonite/require-yml.git"
+    "pellmell": "^1.0.0"
   },
   "peerDependencies": {
     "glue": "3.x"
