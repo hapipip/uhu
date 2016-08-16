@@ -1,8 +1,8 @@
 {
   "name": "uhu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Glue manisfest generator based on directories and config files",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "lab -cCD test/index.js"
   },
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "lodash.values": "^4.2.0",
-    "require-yml": "git+https://github.com/Gastonite/require-yml.git"
+    "pellmell": "^1.0.0"
   },
   "peerDependencies": {
     "glue": "3.x"

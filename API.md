@@ -1,15 +1,15 @@
 ## Interface
 
-Uhu exports a single function `stick` accepting a String `path/to/the/manifest` specifying the Glue manifest for Hapi server configuration.
+Uhu exports a single function `stick` accepting a String or an Array specifying the configuration paths to the Glue manifest for Hapi server configuration.
 
-### `stick(baseDir)`
+### `stick(paths)`
 
 Composes a hapi server object where:
-+ `baseDir` - a folder path valid
++ `paths` -  a String or an Array of paths valid folder
 
 ### Notes
 
-The config files can be YAML, JSON and JS
+The config files can be a Folder, YAML, JSON and JS module
 
 ## Usage
 

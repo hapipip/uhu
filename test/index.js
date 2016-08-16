@@ -1,7 +1,7 @@
 'use strict';
 
 const Lab =  require('lab');
-const Uhu = require('../index');
+const Uhu = require('../lib/index');
 const Glue = require('glue');
 const {expect} = require('code');
 const {describe, it, before} = exports.lab = Lab.script();
