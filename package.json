@@ -1,6 +1,6 @@
 {
   "name": "uhu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Glue manisfest generator based on directories and config files",
   "main": "lib/index.js",
   "scripts": {
@@ -31,7 +31,6 @@
     "lab": "^10.9.0"
   },
   "dependencies": {
-    "lodash.values": "^4.2.0",
     "pellmell": "^1.0.0"
   },
   "peerDependencies": {

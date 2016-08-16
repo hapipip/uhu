@@ -30,7 +30,10 @@ describe('Test manifest building', () => {
         relativeTo: __dirname
     };
 
-    Glue.compose(Uhu.stick(__dirname + '/fixtures/test2'), options, (err, server) => {
+    let manifest = Uhu.stick(__dirname + '/fixtures/test2');
+    expect(manifest.registrations).to.be.an.array();
+
+    Glue.compose(manifest, options, (err, server) => {
 
       expect(err).to.not.exist();
       expect(server.plugins.helloworld).to.exist();
