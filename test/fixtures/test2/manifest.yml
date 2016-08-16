@@ -1,8 +1,10 @@
 connections:
-  - port: 8000
+  web:
+    port: 8000
     labels:
       - web
-  - port: 8001
+  admin:
+    port: 8001
     labels:
       - admin
 registrations:
