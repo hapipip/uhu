@@ -33,7 +33,7 @@
     "lab": "^10.9.0"
   },
   "dependencies": {
-    "pellmell": "^1.0.0"
+    "pellmell": "git+https://github.com/hapipip/uhu"
   },
   "peerDependencies": {
     "glue": "3.x"
