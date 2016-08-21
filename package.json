@@ -1,10 +1,10 @@
 {
   "name": "uhu",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Glue manisfest generator based on directories and config files",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -cCD test/index.js",
+    "test": "lab -vcCD test/index.js",
     "test-watch": "fsmonitor -s -p '+*.js' npm test"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "lab": "^10.9.0"
   },
   "dependencies": {
-    "pellmell": "git+https://github.com/hapipip/pellmell.git"
+    "pellmell": "git+https://github.com/hapipip/pellmell.git#master"
   },
   "peerDependencies": {
     "glue": "3.x"
